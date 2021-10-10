@@ -22,34 +22,34 @@ def intro():
     dest = input("Enter your Destination: ")
 
     if orig in MECQ and dest in MECQ:
-        print("Hi, " , name , "! You are travelling between: MECQ areas.\n")
+        print("\nHi, " , name , "! You are travelling between: MECQ areas.")
         proceed(orig, dest)
     
     elif orig in GCQ_heightened and dest in GCQ_heightened:
-        print("Hi, " , name , "! You are travelling between: Heightened GCQ areas.\n")
+        print("\nHi, " , name , "! You are travelling between: Heightened GCQ areas.")
         proceed(orig, dest)
 
     elif orig in GCQ_regular and dest in GCQ_regular:
-        print("Hi, " , name , "! You are travelling between: Regular GCQ areas.\n")
+        print("\nHi, " , name , "! You are travelling between: Regular GCQ areas.")
         proceed(orig, dest)
     
     else:
         if age < 18:
-            print("Hi, " , name , "! You are a MINOR travelling interzonally.\n")
+            print("\nHi, " , name , "! You are a MINOR travelling interzonally.")
             proceed(orig, dest)
 
         elif age > 18 and age < 65:
             a4 = input("Are you a frontliner? Y/N: ")
             if a4 == "Y" or a4 == "y":
-                print("Thank you for your service Frontliner ", name, "!")
+                print("\nThank you for your service Frontliner ", name, "!")
                 proceed(orig, dest)
             elif a4 == "N" or a4 == "n":
                 pregnant = input("Are you pregnant? Y/N: ")
                 if pregnant == "Y" or pregnant == "y":
-                    print("Woah! Congrats mama ", name, "! Safe travels and take care of your little one :)")
+                    print("\nWoah! Congrats mama ", name, "! Safe travels and take care of your little one :)")
                     proceed(orig, dest)
                 elif pregnant == "N" or pregnant == "n":
-                    print(name, ", sadly, you are not allowed interzonal travel! Please follow the set restrictions.")
+                    print("\n", name, ", sadly, you are not allowed interzonal travel! Please follow the set restrictions.")
                 else:
                     print("Wrong input!")
             else:
@@ -58,16 +58,16 @@ def intro():
         elif age > 65:
             vax = input("Are you fully vaccinated? Y/N: ")
             if vax == "Y" or vax == "y":
-                print("Hi, " , name , "! You are a FULLY VACCINATED ADULT travelling interzonally.\n")
+                print("\nHi, " , name , "! You are a FULLY VACCINATED ADULT travelling interzonally.")
                 proceed(orig, dest)
             elif vax == "N" or vax == "n":
-                print(name, ", sadly, you are not allowed interzonal travel! Please follow the set restrictions.")
+                print("\n",name, ", sadly, you are not allowed interzonal travel! Please follow the set restrictions.")
             else:
                 print("Wrong input!")
             
 
 def proceed(orig, dest):
-    print("\n Here's what we have for you: \n")
+    print("Here's what we have for you: \n")
 
     main_api = "https://www.mapquestapi.com/directions/v2/route?"
     key = "Rbx4dUy6MAKxomggVgx9psZAXsIRwpz6"
