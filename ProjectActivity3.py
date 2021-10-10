@@ -1,6 +1,19 @@
 import urllib.parse
 import requests
 
+def again():
+    again = input("\nWould you like to try again? (Y/N): ")
+
+    if again == "Y" or again == "y":
+        print("\n")
+        intro()
+
+    elif again == "N" or again == "n":
+        print("Thank you and keep safe!\n")
+
+    else:
+        print("Wrong input!")
+
 def intro():
     MECQ = ["Apayao", "Kalinga", "Batanes", "Bataan", "Bulacan", "Cavite", "Lucena City", 
     "Rizal", "Laguna", "Naga City", "Bicol", "Iloilo Province"]
@@ -15,6 +28,8 @@ def intro():
     "Mandaue City", "Siquijor", "Tacloban City", "Zamboanga Sibugay", "Zamboanga City", "Misamis Occidental", "Iligan City",
     "Davao City", "Davao Oriental", "Davao del Sur", "General Santos City", "Sultan Kudarat", "Sarangani", "North Cotabato",
     "South Cotabato", "Agusan del Norte", "Agusan del Sur", "Surigao del Norte", "Dinagat Islands", "Cotabato City", "Lanao del Sur"]
+
+    not_MGCQ = MECQ + GCQ_heightened + GCQ_regular
 
     name = input("Enter your name: ")
     age = int(input("Enter your age: "))
@@ -33,6 +48,11 @@ def intro():
         print("\nHi, " , name , "! You are travelling between: Regular GCQ areas.")
         proceed(orig, dest)
     
+    elif orig not in not_MGCQ and dest not in not_MGCQ:
+        print("\nHi, " , name , "! You are travelling between: MGCQ areas.")
+        proceed(orig, dest)
+
+    
     else:
         if age < 18:
             print("\nHi, " , name , "! You are a MINOR travelling interzonally.")
@@ -49,11 +69,15 @@ def intro():
                     print("\nWoah! Congrats mama ", name, "! Safe travels and take care of your little one :)")
                     proceed(orig, dest)
                 elif pregnant == "N" or pregnant == "n":
-                    print("\n", name, ", sadly, you are not allowed interzonal travel! Please follow the set restrictions.")
+                    print("\n")
+                    print(name, ", sadly, you are not allowed interzonal travel! Please follow the set restrictions.")
+                    again()
                 else:
                     print("Wrong input!")
+                    again()
             else:
                 print("Wrong input!")
+                again()
             
         elif age > 65:
             vax = input("Are you fully vaccinated? Y/N: ")
@@ -62,9 +86,10 @@ def intro():
                 proceed(orig, dest)
             elif vax == "N" or vax == "n":
                 print("\n",name, ", sadly, you are not allowed interzonal travel! Please follow the set restrictions.")
+                again()
             else:
                 print("Wrong input!")
-            
+                again()
 
 def proceed(orig, dest):
     print("Here's what we have for you: \n")
@@ -102,5 +127,6 @@ def proceed(orig, dest):
         print("https://developer.mapquest.com/documentation/directions-api/status-codes")
         print("************************************************************************\n")
 
+    again()
 
 intro()
