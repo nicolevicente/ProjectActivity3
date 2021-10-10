@@ -38,17 +38,7 @@ def intro():
             print("Hi, " , name , "! You are a MINOR travelling interzonally.\n")
             proceed(orig, dest)
 
-        elif age > 65:
-            vax = input("Are you fully vaccinated? Y/N: ")
-            if vax == "Y" or vax == "y":
-                print("Hi, " , name , "! You are a FULLY VACCINATED ADULT travelling interzonally.\n")
-                proceed(orig, dest)
-            elif vax == "N" or vax == "n":
-                print(name, ", sadly, you are not allowed interzonal travel! Please follow the set restrictions.")
-            else:
-                print("Wrong input!")
-        
-        else:
+        elif age > 18 and age < 65:
             a4 = input("Are you a frontliner? Y/N: ")
             if a4 == "Y" or a4 == "y":
                 print("Thank you for your service Frontliner ", name, "!")
@@ -64,6 +54,17 @@ def intro():
                     print("Wrong input!")
             else:
                 print("Wrong input!")
+            
+        elif age > 65:
+            vax = input("Are you fully vaccinated? Y/N: ")
+            if vax == "Y" or vax == "y":
+                print("Hi, " , name , "! You are a FULLY VACCINATED ADULT travelling interzonally.\n")
+                proceed(orig, dest)
+            elif vax == "N" or vax == "n":
+                print(name, ", sadly, you are not allowed interzonal travel! Please follow the set restrictions.")
+            else:
+                print("Wrong input!")
+            
 
 def proceed(orig, dest):
     print("\n Here's what we have for you: \n")
