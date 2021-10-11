@@ -15,19 +15,19 @@ def again():
         print("Wrong input!")
 
 def intro():
-    MECQ = ["Apayao", "Kalinga", "Batanes", "Bataan", "Bulacan", "Cavite", "Lucena City", 
-    "Rizal", "Laguna", "Naga City", "Bicol", "Iloilo Province"]
+    MECQ = ["Apayao", "Kalinga", "Batanes", "Bataan", "Bulacan", "Cavite", "Lucena",
+    "Rizal", "Laguna", "Naga", "Bicol", "Iloilo Province"]
 
-    GCQ_heightened = ["Abra", "Baguio City", "Ilocos Sur", "Pangasinan", "Cagayan", "Isabela", "Santiago City",
-    "Nueva Vizcaya", "Quirino",  "Quezon", "Batangas", "Bacolod City", "Capiz", "Iloilo City", "Lapu-Lapu City",
-    "Negros Oriental", "Bohol", "Zamboanga del Norte", "Zamboanga del Sur", "Cagayan de Oro City", "Misamis Oriental", 
-    "Davao del Norte", "Davao Occidental", "Davao de Oro", "Butuan City", "Surigao del Sur"]
+    GCQ_heightened = ["Abra", "Baguio", "Ilocos Sur", "Pangasinan", "Cagayan", "Isabela", "Santiago",
+    "Nueva Vizcaya", "Quirino",  "Quezon", "Batangas", "Bacolod", "Capiz", "Iloilo", "Lapu-Lapu",
+    "Negros Oriental", "Bohol", "Zamboanga del Norte", "Zamboanga del Sur", "Cagayan de Oro", "Misamis Oriental", 
+    "Davao del Norte", "Davao Occidental", "Davao de Oro", "Butuan", "Surigao del Sur"]
 
-    GCQ_regular = ["Ilocos Norte", "Dagupan City", "Benguet", "Ifugao", "Tarlac", "Mariduque", "Occidental Mindoro", "Oriental Mindoro",
+    GCQ_regular = ["Ilocos Norte", "Dagupan", "Benguet", "Ifugao", "Tarlac", "Mariduque", "Occidental Mindoro", "Oriental Mindoro",
     "Puerto Princesa", "Albay", "Camarines Norte", "Aklan", "Antique", "Guimaras", "Negros Occidental", "Cebu City", "Cebu Province",
-    "Mandaue City", "Siquijor", "Tacloban City", "Zamboanga Sibugay", "Zamboanga City", "Misamis Occidental", "Iligan City",
-    "Davao City", "Davao Oriental", "Davao del Sur", "General Santos City", "Sultan Kudarat", "Sarangani", "North Cotabato",
-    "South Cotabato", "Agusan del Norte", "Agusan del Sur", "Surigao del Norte", "Dinagat Islands", "Cotabato City", "Lanao del Sur"]
+    "Mandaue", "Siquijor", "Tacloban", "Zamboanga Sibugay", "Zamboanga", "Misamis Occidental", "Iligan",
+    "Davao", "Davao Oriental", "Davao del Sur", "General Santos", "Sultan Kudarat", "Sarangani", "North Cotabato",
+    "South Cotabato", "Agusan del Norte", "Agusan del Sur", "Surigao del Norte", "Dinagat Islands", "Cotabato", "Lanao del Sur"]
 
     not_MGCQ = MECQ + GCQ_heightened + GCQ_regular
 
@@ -47,50 +47,57 @@ def intro():
     elif orig in GCQ_regular and dest in GCQ_regular:
         print("\nHi, " , name , "! You are travelling between: Regular GCQ areas.")
         proceed(orig, dest)
-    
+
     elif orig not in not_MGCQ and dest not in not_MGCQ:
         print("\nHi, " , name , "! You are travelling between: MGCQ areas.")
         proceed(orig, dest)
 
-    
-    else:
-        if age < 18:
-            print("\nHi, " , name , "! You are a MINOR travelling interzonally.")
+    elif orig in not_MGCQ and dest not in not_MGCQ:
+        interzone(name, age, orig, dest)
+
+    elif orig not in not_MGCQ and dest in not_MGCQ:
+        interzone(name, age, orig, dest)
+
+def interzone(name, age, orig, dest):
+    print("\n******INTERZONAL TRAVEL******")
+
+    if age < 18:
+        print("\nHi, " , name , "! You are a MINOR travelling interzonally.")
+        proceed(orig, dest)
+
+    elif age > 18 and age < 65:
+        a4 = input("Are you a frontliner? Y/N: ")
+        if a4 == "Y" or a4 == "y":
+            print("\nThank you for your service Frontliner ", name, "!")
             proceed(orig, dest)
-
-        elif age > 18 and age < 65:
-            a4 = input("Are you a frontliner? Y/N: ")
-            if a4 == "Y" or a4 == "y":
-                print("\nThank you for your service Frontliner ", name, "!")
+        elif a4 == "N" or a4 == "n":
+            pregnant = input("Are you pregnant? Y/N: ")
+            if pregnant == "Y" or pregnant == "y":
+                print("\nWoah! Congrats mama ", name, "! Safe travels and take care of your little one :)")
                 proceed(orig, dest)
-            elif a4 == "N" or a4 == "n":
-                pregnant = input("Are you pregnant? Y/N: ")
-                if pregnant == "Y" or pregnant == "y":
-                    print("\nWoah! Congrats mama ", name, "! Safe travels and take care of your little one :)")
-                    proceed(orig, dest)
-                elif pregnant == "N" or pregnant == "n":
-                    print("\n")
-                    print(name, ", sadly, you are not allowed interzonal travel! Please follow the set restrictions.")
-                    again()
-                else:
-                    print("Wrong input!")
-                    again()
+            elif pregnant == "N" or pregnant == "n":
+                print("\n")
+                print(name, ", sadly, you are not allowed interzonal travel! Please follow the set restrictions.")
+                again()
             else:
                 print("Wrong input!")
                 again()
+        else:
+            print("Wrong input!")
+            again()
             
-        elif age > 65:
-            vax = input("Are you fully vaccinated? Y/N: ")
-            if vax == "Y" or vax == "y":
-                print("\nHi, " , name , "! You are a FULLY VACCINATED ADULT travelling interzonally.")
-                proceed(orig, dest)
-            elif vax == "N" or vax == "n":
-                print("\n",name, ", sadly, you are not allowed interzonal travel! Please follow the set restrictions.")
-                again()
-            else:
-                print("Wrong input!")
-                again()
-
+    elif age > 65:
+        vax = input("Are you fully vaccinated? Y/N: ")
+        if vax == "Y" or vax == "y":
+            print("\nHi, " , name , "! You are a FULLY VACCINATED ADULT travelling interzonally.")
+            proceed(orig, dest)
+        elif vax == "N" or vax == "n":
+            print("\n",name, ", sadly, you are not allowed interzonal travel! Please follow the set restrictions.")
+            again()
+        else:
+            print("Wrong input!")
+            again()        
+            
 def proceed(orig, dest):
     print("Here's what we have for you: \n")
 
