@@ -23,7 +23,7 @@ def intro():
     #Places with lockdown restrictions within the Philippines as of October 8, 2021. (array)
     #This will check if user starts from a place with lockdown restrictions.
     #Add another feature (to consider)
-    #Change places (depending on new regulations imposed)
+    #Add/Delete regions/cities (depending on new regulations imposed by the IATF)
 
     MECQ = ["Apayao", "Kalinga", "Batanes", "Bataan", "Bulacan", "Cavite", "Lucena",
     "Rizal", "Laguna", "Naga", "Bicol", "Iloilo Province"]
@@ -115,6 +115,7 @@ def interzone(name, age, orig, dest):
             
 def proceed(orig, dest):
 
+    #Option 1 of the rubric
     #Base code from Lab 4.9.2
 
     print("Here's what we have for you: \n")
