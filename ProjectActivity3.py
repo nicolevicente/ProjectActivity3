@@ -2,6 +2,10 @@ import urllib.parse
 import requests
 
 def again():
+
+    #Additional Feature
+    #Lets user to try again
+
     again = input("\nWould you like to try again? (Y/N): ")
 
     if again == "Y" or again == "y":
@@ -15,6 +19,12 @@ def again():
         print("Wrong input!")
 
 def intro():
+    #Additional Feature
+    #Places with lockdown restrictions within the Philippines as of October 8, 2021. (array)
+    #This will check if user starts from a place with lockdown restrictions.
+    #Add another feature (to consider)
+    #Change places (depending on new regulations imposed)
+
     MECQ = ["Apayao", "Kalinga", "Batanes", "Bataan", "Bulacan", "Cavite", "Lucena",
     "Rizal", "Laguna", "Naga", "Bicol", "Iloilo Province"]
 
@@ -59,7 +69,12 @@ def intro():
         interzone(name, age, orig, dest)
 
 def interzone(name, age, orig, dest):
-    print("\n******INTERZONAL TRAVEL******")
+    print("\n*****INTERZONAL TRAVEL*****")
+
+    #Additional Feature
+    #Conditional statements(Age, Vaccination status, Frontliner, Pregnancy)
+    #Backlogs: Conditional statements for Age, Vaccine, Frontliner, Pregnancy, Restrictions based from IATF regulations.
+    #Add another feature (to consider)
 
     if age < 18:
         print("\nHi, " , name , "! You are a MINOR travelling interzonally.")
@@ -99,6 +114,9 @@ def interzone(name, age, orig, dest):
             again()        
             
 def proceed(orig, dest):
+
+    #Base code from Lab 4.9.2
+
     print("Here's what we have for you: \n")
 
     main_api = "https://www.mapquestapi.com/directions/v2/route?"
